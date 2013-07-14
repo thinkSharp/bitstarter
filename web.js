@@ -13,6 +13,7 @@ fs.exists(filename,function(exists) {
           fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead,buffer) {
              var data = buffer.toString("utf8", 0, buffer.length);
              response.send(data);
+             response.send("inside the file");
              fs.close(fd);
           });        
        });
