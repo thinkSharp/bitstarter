@@ -18,8 +18,7 @@ fs.exists(filename,function(exists) {
        });
     }); 
  } else {
-      response.send("No file availabe");
-   }
+      response.send("No file exist);
 }); 
 response.send('Hello World3!');
 });
