@@ -29,14 +29,18 @@ var CHECKSFILE_DEFAULT="checks.json";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
-    if (fs.existsSync(instr)){
+    if (!fs.existsSync(instr)){
 	console.log("%s does not exist. Existing.", instr);
 	process.exit(1); 
     }
     return instr;
 };
 
-var cheerioHtmlFile = function(checksfile) {
+var cheerioHtmlFile = function(htmlfile) {
+    return cheerio.load(fs.readFileSync(htmlfile));
+};
+
+var loadChecks = function(checksfile) {
     return JSON.parse(fs.readFileSync(checksfile));
 };
 
@@ -67,3 +71,4 @@ if(require.main == module){
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
+
